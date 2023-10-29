@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- Information about the page -->
+	<!--This is the comment tag-->
+	
+	<title>Home Page</title>
+	<style>
+		table, th, td {
+			border: 1px solid black;
+			border-collapse: collapse;
+			text-align:center;
+		  }
+		  
+	</style>
+</head>
+
+<body>
+	<!--Contents of the webpage-->
+    <h1>This Is Home Page</h1>
+
+	<a href="{% url 'add_employee' %}"> Add Employee</a><br><br>
+	<div>
+
+		<table >
+			<tr>
+				<th>Sr No</th>
+				<th>Employee Name</th>		
+				<th>Employee Last Name</th>
+				<th>Employee ID</th>
+				<th>Address</th>
+				<th>Contact No.</th>
+				<th>Employee Since</th>
+			</tr>
+				{% for employee in employee_list %}
+				<tr>
+					<td>{{employee.id}}</td>
+					<td>{{employee.first_name}}</td>		
+					<td>{{employee.last_name}}</td>
+					<td>{{employee.employee_id}}</td>
+					<td>{{employee.Address}}</td>
+					<td>{{employee.contact_no}}</td>
+					<td>{{employee.joining_date}}</td>
+					<td><button><a href="{% url 'update_employee' employee.id %}"> Edit</a></button>
+						<form action="{% url 'delete_employee' employee.id %}" method="POST">
+							{% csrf_token %}
+							{{fm.as_p}}
+							<input type="submit" value="Delete">
+						</form>
+					</td>
+				</tr>
+				{% endfor %}
+		</table>
+</body>
+
+</html>

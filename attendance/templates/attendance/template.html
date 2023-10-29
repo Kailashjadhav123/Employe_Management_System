@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<link rel="stylesheet" href="{% static 'attendance/myfirst.css' %}">
+<link rel="static" href="{% static 'attendance/images/image1.jpeg' %}">
+
+<body>   
+  <img src="{% static 'attendance/images/image1.jpeg' alt='Italian Trulli' %}" style='width:400px; height:300px;'>
+  <img src="{% static 'attendance/images/image2.jpeg' alt='Italian Trulli' %}" style='width:400px; height:300px;'>
+
+  <br><br>
+  {{members}}
+  <br><br>
+  <table border='1'>
+  <tr>
+    <th>ID</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Contact No.</th>
+  </tr>
+  {% for x in members %}
+    <tr>
+      <td>{{ x.id }}</td>
+      <td>{{ x.first_name}}</td>
+      <td>{{ x.last_name }}</td>
+      <td>{{ x.employee_id }}</td>
+    </tr>
+  {% endfor %}
+</table>
+<br>
+<img src="{% static 'attendance/images/image3.jpeg' alt='Italian Trulli' %}" style='width:400px; height:300px;'>
+</body>
+</html>
